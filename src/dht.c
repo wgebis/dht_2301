@@ -6,19 +6,15 @@
 #include <string.h>
  
 #define MAX_TIMINGS 85
-#define DHT_PIN 7
-int data[5] = { 0, 0, 0, 0, 0 };
  
 int read_dht_data(int pin)
 {
     uint8_t laststate = HIGH;
-    uint8_t counter = 0;
-    uint8_t j=0, i;
+    uint8_t counter=0, j=0, i;
+    int data[5] = { 0, 0, 0, 0, 0 };
 
-    data[0] = data[1] = data[2] = data[3] = data[4] = 0;
- 
     /* pull pin down for 18 milliseconds */
-    pinMode(DHT_PIN, OUTPUT);
+    pinMode(pin, OUTPUT);
     digitalWrite(pin, LOW);
     delay(18);
  
