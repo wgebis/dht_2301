@@ -68,7 +68,6 @@ int read_dht_data(int pin)
 	return 0;
     }
     else  {
-       //printf( "Data not good, skip\n" );
        return 1;
     }
 }
@@ -82,13 +81,14 @@ int main(int argc, char *argv[])
     }
 
     for (int i = 0; i < strlen(argv[1]); i++) {
-    if (!isdigit(argv[1][i])) {
-        printf("The pin number is in wrong format.\n");
-        exit(1);
-    }
+        if (!isdigit(argv[1][i])) {
+            printf("The pin number is in wrong format.\n");
+            exit(1);
+        }
     }
 
     if (wiringPiSetup() == -1)
+        printf("Unable to initialize WiringPi library.\n");
         exit(1);
 
     int i = 0;  
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 	  i++;
 	else
 	  break;
-        delay( 500 ); 
+        delay(500); 
     }
     return(0);
 }
