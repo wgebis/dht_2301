@@ -64,6 +64,10 @@ int read_dht_data(int pin)
         if (data[2] & 0x80) {
             c = -c;
         }
+	if (h < 20 || h > 95) {
+	    // Humidity out of range
+	    return 1;
+	}
         printf("Humidity = %.1f %% Temperature = %.1f\n", h, c);
 	return 0;
     }
