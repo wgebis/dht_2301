@@ -100,7 +100,7 @@ int main(int argc, char *argv[])
 	  i++;
 	else
 	  break;
-        delay(1500); 
+        delay(500); 
     }
     return(0);
 }
