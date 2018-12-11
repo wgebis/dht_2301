@@ -20,7 +20,7 @@ int read_dht_data(int pin)
  
     /* prepare to read the pin */
     pinMode(pin, INPUT);
- 
+
     /* detect change and read data */
     for (i = 0; i < MAX_TIMINGS; i++) {
         counter = 0;
@@ -45,7 +45,7 @@ int read_dht_data(int pin)
             j++;
         }
     }
- 
+
     /*
      * check we read 40 bits (8bit x 5 ) + verify checksum in the last byte
      * print it out if data is good
@@ -87,9 +87,10 @@ int main(int argc, char *argv[])
         }
     }
 
-    if (wiringPiSetup() == -1)
+    if (wiringPiSetup() == -1) {
         printf("Unable to initialize WiringPi library.\n");
         exit(1);
+    }
 
     int i = 0;  
     while (i < 6)
@@ -99,7 +100,7 @@ int main(int argc, char *argv[])
 	  i++;
 	else
 	  break;
-        delay(500); 
+        delay(1500); 
     }
     return(0);
 }
